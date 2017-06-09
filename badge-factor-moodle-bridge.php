@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://bitbucket.org/django_d/
+ * @link              https://github.com/DigitalPygmalion/badge-factor-moodle-bridge
  * @since             1.0.0
  * @package           Badge_Factor_Moodle_Bridge
  *
  * @wordpress-plugin
  * Plugin Name:       BadgeFactorMoodleBridge
- * Plugin URI:        https://bitbucket.org/ctrlweb/badge-factor-moodle-bridge
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Plugin URI:        https://github.com/DigitalPygmalion/badge-factor-moodle-bridge
+ * Description:       Link WP and Moodle.
  * Version:           1.0.0
- * Author:            Django Doucet
- * Author URI:        https://bitbucket.org/django_d/
+ * Author:            Django Doucet (Service de l'audiovisuel UQAM)
+ * Author URI:        https://audiovisuel.uqam.ca/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       badge-factor-moodle-bridge
