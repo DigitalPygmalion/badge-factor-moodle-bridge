@@ -14,6 +14,9 @@ Here are the required plugins on the Moodle side:
 - wp2moodle (moodle plugin) : [wp2moodle-moodle][3]
 - Nosey notifications (DigitalPygmalion fork) : [nosey_notifications][4]
 
+## Configuration
+
+When creating a Badge be sure to enter the **Moodle Course ID** of the corresponding course
 
 [1]: https://github.com/DigitalPygmalion/badge-factor
 [2]: https://github.com/frumbert/wp2moodle--wordpress-
