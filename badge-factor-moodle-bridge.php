@@ -57,6 +57,55 @@ register_deactivation_hook( __FILE__, 'deactivate_badge_factor_moodle_bridge' );
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-badge-factor-moodle-bridge.php';
 
+ /**
+ * Adds a custom field to link moodle course_id_number to badges post type.
+ *
+ * @param array $buttons Array of registered TinyMCE Buttons
+ * @return array Modified array of registered TinyMCE Buttons
+ */
+function create_course_id_field() {
+	if(function_exists("register_field_group"))
+	{
+		register_field_group(array (
+			'id' => 'acf_moodle-bridge',
+			'title' => 'Moodle Bridge',
+			'fields' => array (
+				array (
+					'key' => 'field_59aedcdcbc971',
+					'label' => 'Course ID number',
+					'name' => 'course_id_number',
+					'type' => 'text',
+					'default_value' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+					'formatting' => 'html',
+					'maxlength' => '',
+				),
+			),
+			'location' => array (
+				array (
+					array (
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'badges',
+						'order_no' => 0,
+						'group_no' => 0,
+					),
+				),
+			),
+			'options' => array (
+				'position' => 'normal',
+				'layout' => 'default',
+				'hide_on_screen' => array (
+				),
+			),
+			'menu_order' => 0,
+		));
+	}
+}
+add_action( 'init', 'create_course_id_field' );
+
 /**
  * Add the endpoint to redirect user to his BuddyPress page.
  */
@@ -158,59 +207,6 @@ class TinyMCE_Badgefactor_Shortcode {
 
 }
 $tinymce_badgefactor_shortcode = new TinyMCE_Badgefactor_Shortcode;
-
-/**
- * Adds a field to link moodle course_id_number & wordpress badge
- *
- * @param array $buttons Array of registered TinyMCE Buttons
- * @return array Modified array of registered TinyMCE Buttons
- */
-if( function_exists('acf_add_local_field_group') ):
-
-    acf_add_local_field_group(array (
-        'key' => 'group_591c4e2ccec4c',
-        'title' => 'Moodle Bridge',
-        'fields' => array (
-            array (
-                'key' => 'field_591c4e41b604b',
-                'label' => 'Course ID number',
-                'name' => 'course_id_number',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 1,
-                'conditional_logic' => 0,
-                'wrapper' => array (
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
-            ),
-        ),
-        'location' => array (
-            array (
-                array (
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'badges',
-                ),
-            ),
-        ),
-        'menu_order' => 0,
-        'position' => 'normal',
-        'style' => 'default',
-        'label_placement' => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => 1,
-        'description' => '',
-    ));
-
-endif;
 
 /**
  * Begins execution of the plugin.
